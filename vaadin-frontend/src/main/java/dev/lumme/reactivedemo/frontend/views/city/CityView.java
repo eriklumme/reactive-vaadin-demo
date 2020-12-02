@@ -19,8 +19,7 @@ import java.util.Collections;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
 @PageTitle("Cities: Skylines")
-@Route(value = "hello", layout = MainView.class)
-@RouteAlias(value = "", layout = MainView.class)
+@Route(value = "", layout = MainView.class)
 public class CityView extends VerticalLayout {
 
     private final CityClient cityClient;
@@ -43,10 +42,12 @@ public class CityView extends VerticalLayout {
             Button clear = new Button("Clear", e -> grid.setItems(Collections.emptyList()));
             clear.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
-            Button responsivenessButton = new Button("Test responsiveness", e -> Notification.show("Reponse"));
+            Button responsivenessButton = new Button("Test responsiveness",
+                    e -> Notification.show("Response"));
             responsivenessButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
-            add(grid, new HorizontalLayout(setItemsSync, setItemsAsync, setItemsReactive, clear, responsivenessButton));
+            add(grid, new HorizontalLayout(
+                    setItemsSync, setItemsAsync, setItemsReactive, clear, responsivenessButton));
         }
     }
 

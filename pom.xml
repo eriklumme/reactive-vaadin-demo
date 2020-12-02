@@ -26,7 +26,6 @@
         <module>spring-backend</module>
         <module>vaadin-frontend</module>
         <module>common</module>
-        <module>load-test</module>
     </modules>
 
 </project>

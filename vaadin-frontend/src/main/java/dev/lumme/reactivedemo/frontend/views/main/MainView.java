@@ -83,8 +83,7 @@ public class MainView extends AppLayout {
 
     private Component[] createMenuItems() {
         return new Tab[] {
-            createTab("Hello World", CityView.class),
-            createTab("Socket", SocketView.class)
+            createTab("Cities", CityView.class)
         };
     }
 

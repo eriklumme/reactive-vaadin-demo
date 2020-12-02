@@ -1,5 +1,6 @@
 package dev.lumme.reactivedemo.frontend.client;
 
+import com.vaadin.flow.server.VaadinSession;
 import dev.lumme.reactivedemo.common.client.CityClient;
 import dev.lumme.reactivedemo.common.dto.CityDTO;
 import org.springframework.core.ParameterizedTypeReference;
@@ -26,10 +27,12 @@ public class CityClientImpl implements CityClient {
 
     @Override
     public Mono<List<CityDTO>> findCitiesReactive() {
+        VaadinSession vaadinSession =  VaadinSession.getCurrent();
         return webClient.get().uri(CityClient.CITIES)
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<List<CityDTO>>() {})
-                .publishOn(Schedulers.fromExecutor(executorService));
+                .publishOn(Schedulers.fromExecutor(executorService))
+                .subscriberContext(context -> context.put("session", vaadinSession));
     }
 
     @Override

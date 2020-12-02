@@ -72,7 +72,7 @@ public class FileTest {
         private FileCompletionHandler(String fileName, Runnable onCompleted) {
             try {
                 this.onCompleted = onCompleted;
-                AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(
+                fileChannel = AsynchronousFileChannel.open(
                         Paths.get(getClass().getResource(fileName).toURI()),
                         Collections.singleton(StandardOpenOption.READ),
                         executorService);
