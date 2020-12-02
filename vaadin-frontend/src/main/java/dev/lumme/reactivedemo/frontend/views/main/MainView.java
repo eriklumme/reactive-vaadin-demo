@@ -1,6 +1,8 @@
 package dev.lumme.reactivedemo.frontend.views.main;
 
 import com.vaadin.flow.component.page.Push;
+import com.vaadin.flow.server.VaadinSession;
+import dev.lumme.reactivedemo.frontend.views.changepassword.ChangePasswordView;
 import dev.lumme.reactivedemo.frontend.views.city.CityView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
@@ -19,7 +21,6 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
-import dev.lumme.reactivedemo.frontend.views.socket.SocketView;
 
 import java.util.Optional;
 
@@ -40,6 +41,8 @@ public class MainView extends AppLayout {
         addToNavbar(true, createHeaderContent());
         menu = createMenu();
         addToDrawer(createDrawerContent(menu));
+
+        VaadinSession.getCurrent().setAttribute("user", "erik");
     }
 
     private Component createHeaderContent() {
@@ -83,7 +86,8 @@ public class MainView extends AppLayout {
 
     private Component[] createMenuItems() {
         return new Tab[] {
-            createTab("Cities", CityView.class)
+            createTab("Cities", CityView.class),
+            createTab("Change password", ChangePasswordView.class)
         };
     }
 

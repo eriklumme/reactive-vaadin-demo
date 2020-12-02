@@ -1,6 +1,7 @@
 package dev.lumme.reactivedemo.backend.controller;
 
 import dev.lumme.reactivedemo.backend.service.CityService;
+import dev.lumme.reactivedemo.common.client.CityClient;
 import dev.lumme.reactivedemo.common.dto.CityDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class CityController {
         this.cityService = cityService;
     }
 
-    @GetMapping("/cities")
+    @GetMapping(CityClient.CITIES)
     public List<CityDTO> findCities() {
         try {
             Thread.sleep(5000);

@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FileDTO {
+public class ChangePasswordDTO {
 
-    private String filename;
-    private String path;
+    private String user;
+    private String password;
 }
