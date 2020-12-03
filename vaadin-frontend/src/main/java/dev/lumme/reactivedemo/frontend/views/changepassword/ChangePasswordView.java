@@ -38,10 +38,7 @@ public class ChangePasswordView extends VerticalLayout {
             Button changePasswordWrong = new Button("Change password without context");
             changePasswordWrong.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
-            Div errorDiv = new Div();
-            errorDiv.getStyle().set("color", "var(--lumo-error-text-color)");
-            errorDiv.getStyle().set("font-size", "var(--lumo-font-size-xs)");
-            errorDiv.getStyle().set("white-space", "pre-wrap");
+            Div errorDiv = createErrorHolderDiv();
 
             changePassword.addClickListener(e -> changePassword(newField, confirmField, errorDiv, true));
             changePasswordWrong.addClickListener(e -> changePassword(newField, confirmField, errorDiv, false));
@@ -90,5 +87,13 @@ public class ChangePasswordView extends VerticalLayout {
                     "Password must be scalable and thread safe");
         }
         return null;
+    }
+
+    private Div createErrorHolderDiv() {
+        Div errorDiv = new Div();
+        errorDiv.getStyle().set("color", "var(--lumo-error-text-color)");
+        errorDiv.getStyle().set("font-size", "var(--lumo-font-size-xs)");
+        errorDiv.getStyle().set("white-space", "pre-wrap");
+        return errorDiv;
     }
 }

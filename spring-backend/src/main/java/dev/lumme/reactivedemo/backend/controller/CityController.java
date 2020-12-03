@@ -20,7 +20,7 @@ public class CityController {
     @GetMapping(CityClient.CITIES)
     public List<CityDTO> findCities() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -20,7 +20,10 @@ public class ChangePasswordClientImpl implements ChangePasswordClient {
     @Override
     public Mono<Integer> changePassword(String password) {
         return Mono.subscriberContext()
-                .flatMap(context -> createChangePasswordRequest(context.getOrDefault("user", null), password));
+                .flatMap(context -> {
+                    String user = context.getOrDefault("user", null);
+                    return createChangePasswordRequest(user, password);
+                });
     }
 
     private Mono<Integer> createChangePasswordRequest(String user, String password) {
