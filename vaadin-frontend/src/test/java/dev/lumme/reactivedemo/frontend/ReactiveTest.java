@@ -23,7 +23,7 @@ public class ReactiveTest {
     void testAsynchronousStream() {
         System.out.println("Creating and subscribing to mono");
 
-        Mono.delay(Duration.ZERO)
+        Mono.delay(Duration.ofMillis(10))
                 .map(v -> "Hello World")
                 .subscribe(System.out::println);
 
